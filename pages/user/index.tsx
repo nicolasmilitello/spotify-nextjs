@@ -231,7 +231,6 @@ const UserPage = () => {
 							userPageState.userInformation.information.email
 						}
 						detail={userPageState.userInformation.information.product?.toUpperCase()}
-						showYourLibraryButton={true}
 						error={userPageState.userInformation.errors.information}
 					/>
 
