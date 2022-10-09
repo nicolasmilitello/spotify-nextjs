@@ -1,4 +1,5 @@
 import { ClientSafeProvider, getProviders, signIn } from 'next-auth/react';
+import Head from 'next/head';
 import { InferGetServerSidePropsType } from 'next/types';
 
 // types
@@ -9,6 +10,10 @@ type LoginPageProps = {
 const Login = ({ providers }: LoginPageProps) => {
 	return (
 		<div className='flex flex-col items-center bg-[#1ed760] min-h-screen w-full justify-center'>
+			<Head>
+				<title>Login · Applaudo Studios Final Project</title>
+			</Head>
+			
 			<img
 				className='w-2/4 mb-5'
 				src='https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Black.png'
