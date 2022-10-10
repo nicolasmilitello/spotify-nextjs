@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 //* components
 import CardsContainer from '../../components/cards-container/cards-container';
 import DetailsTracks from '../../components/details-tracks/details-tracks';
+import ErrorMessage from '../../components/error-message/error-message';
 import Layout from '../../components/layout/layout';
 import Title from '../../components/title/title';
 
@@ -154,30 +155,46 @@ const YourLibraryPage = () => {
 			<div className='bg-[#181818] p-5 font-montserrat'>
 				<Title title='Your library' />
 
-				<DetailsTracks
-					title='Saved tracks'
-					parentComponent='album'
-					tracks={userLibraryState.userLibrary.tracks.data}
-					id={'yourlibrary'}
-					actionType='SET_USER_LIBRARY_TRACKS_OFFSET'
-					tracksPerPage={numberOfCardsPerPageYourLibraryPage}
-					totalPages={userLibraryState.userLibrary.tracks.totalPages}
-					hasToBePaginated={true}
-					callback={userLibraryDispatch}
-					error={userLibraryState.userLibrary.errors.tracks}
-				/>
+				{userLibraryState.userLibrary.tracks.data.length > 0 ? (
+					<DetailsTracks
+						title='Saved tracks'
+						parentComponent='album'
+						tracks={userLibraryState.userLibrary.tracks.data}
+						id={'yourlibrary'}
+						actionType='SET_USER_LIBRARY_TRACKS_OFFSET'
+						tracksPerPage={numberOfCardsPerPageYourLibraryPage}
+						totalPages={
+							userLibraryState.userLibrary.tracks.totalPages
+						}
+						hasToBePaginated={true}
+						callback={userLibraryDispatch}
+						error={userLibraryState.userLibrary.errors.tracks}
+					/>
+				) : (
+					<div className='my-14'>
+						<ErrorMessage error='You do not save any track.' />
+					</div>
+				)}
 
-				<CardsContainer
-					paginationType='paginatedByOffsetInAPI'
-					title='Saved albums'
-					dataByProps={userLibraryState.userLibrary.albums.data}
-					id={'yourlibrary'}
-					pathToRedirect='album'
-					totalPages={userLibraryState.userLibrary.albums.totalPages}
-					actionType='SET_USER_LIBRARY_ALBUMS_OFFSET'
-					callback={userLibraryDispatch}
-					error={userLibraryState.userLibrary.errors.albums}
-				/>
+				{userLibraryState.userLibrary.albums.data.length > 0 ? (
+					<CardsContainer
+						paginationType='paginatedByOffsetInAPI'
+						title='Saved albums'
+						dataByProps={userLibraryState.userLibrary.albums.data}
+						id={'yourlibrary'}
+						pathToRedirect='album'
+						totalPages={
+							userLibraryState.userLibrary.albums.totalPages
+						}
+						actionType='SET_USER_LIBRARY_ALBUMS_OFFSET'
+						callback={userLibraryDispatch}
+						error={userLibraryState.userLibrary.errors.albums}
+					/>
+				) : (
+					<div className='my-14'>
+						<ErrorMessage error='You do not save any album.' />
+					</div>
+				)}
 			</div>
 		</Layout>
 	);
