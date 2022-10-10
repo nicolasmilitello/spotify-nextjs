@@ -12,7 +12,7 @@ type PaginationPropsType = {
 	id: string;
 };
 
-function Pagination({ pages, setCurrentPage, id }: PaginationPropsType) {
+const Pagination = ({ pages, setCurrentPage, id }: PaginationPropsType) => {
 	const numberOfPages: (string | number)[] = [];
 
 	for (let i = 1; i <= pages; i++) {
