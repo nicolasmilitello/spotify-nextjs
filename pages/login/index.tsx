@@ -25,7 +25,7 @@ const Login = ({ providers }: LoginPageProps) => {
 				).map((provider) => (
 					<div key={provider.name}>
 						<button
-							className='bg-[#000000] text-[#f7f3cd] p-3 rounded-full hover:bg-white hover:text-black transition-all duration-500'
+							className='bg-[#000000] text-[#f7f3cd] p-3 rounded-full hover:bg-white hover:text-black transition-all duration-500 font-montserrat font-bold'
 							onClick={() =>
 								signIn(provider.id, { callbackUrl: '/' })
 							}
