@@ -1,3 +1,5 @@
+import React from "react";
+
 const ContentSeparator = () => {
 	return (
 		<div className="flex justify-center py-5 items-center w-full">
@@ -6,4 +8,4 @@ const ContentSeparator = () => {
 	);
 };
 
-export default ContentSeparator;
+export default React.memo(ContentSeparator);
