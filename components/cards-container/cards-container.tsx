@@ -1,4 +1,4 @@
-import React, { Dispatch, useRef } from 'react';
+import React, { Dispatch } from 'react';
 import { useEffect, useState } from 'react';
 
 //* action types
