@@ -1,5 +1,9 @@
 //* components
 import WrapperLinkCard from '../wrapper-link-card/wrapper-link-card';
+import Image from 'next/image';
+
+//* images
+import artist_album_default from '../../public/artist_album_default.png';
 
 // type
 type CardPropsType = {
@@ -39,11 +43,20 @@ const Card = ({
 						: ''
 				}`}
 			>
-				<img
-					className="group-hover:opacity-5 duration-300"
-					src={image}
-					alt={name}
-				/>
+				{
+					image ? (
+						<img
+							className="group-hover:opacity-5 duration-300"
+							src={image}
+							alt={name}
+						/>
+					) : (
+						<div className="group-hover:opacity-5 duration-300">
+						<Image src={artist_album_default} alt={name} width="200%" height="200%" />
+						</div>
+					)
+				}
+				
 				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 invisible md:group-hover:visible">
 					<p className="text-center font-semibold text-xs md:text-sm">
 						{name}

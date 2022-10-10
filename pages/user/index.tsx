@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import CardsContainer from '../../components/cards-container/cards-container';
 import DetailsHeader from '../../components/details-header/details-header';
 import DetailsTracks from '../../components/details-tracks/details-tracks';
+import ErrorMessage from '../../components/error-message/error-message';
 import Layout from '../../components/layout/layout';
 
 //* constants
@@ -234,67 +235,91 @@ const UserPage = () => {
 						error={userPageState.userInformation.errors.information}
 					/>
 
-					<DetailsTracks
-						title='My top tracks'
-						parentComponent='album'
-						tracks={
-							userPageState.userInformation.userTopTracks.data
-						}
-						id={userPageState.userInformation.information.id}
-						actionType='SET_USER_TOP_TRACKS_OFFSET'
-						tracksPerPage={numberOfTopTracks}
-						totalPages={
-							userPageState.userInformation.userTopTracks
-								.totalPages
-						}
-						hasToBePaginated={true}
-						callback={userPageDispatch}
-						error={
-							userPageState.userInformation.errors.userTopTracks
-						}
-					/>
+					{userPageState.userInformation.userTopTracks.data.length >
+					0 ? (
+						<DetailsTracks
+							title='My top tracks'
+							parentComponent='album'
+							tracks={
+								userPageState.userInformation.userTopTracks.data
+							}
+							id={userPageState.userInformation.information.id}
+							actionType='SET_USER_TOP_TRACKS_OFFSET'
+							tracksPerPage={numberOfTopTracks}
+							totalPages={
+								userPageState.userInformation.userTopTracks
+									.totalPages
+							}
+							hasToBePaginated={true}
+							callback={userPageDispatch}
+							error={
+								userPageState.userInformation.errors
+									.userTopTracks
+							}
+						/>
+					) : (
+						<div className='my-14'>
+							<ErrorMessage error='No top tracks found.' />
+						</div>
+					)}
 
-					<CardsContainer
-						paginationType='paginatedByOffsetInAPI'
-						title='My top artists'
-						dataByProps={
-							userPageState.userInformation.userTopArtists.data
-						}
-						id={userPageState.userInformation.information.id}
-						cardsFormat='circle'
-						pathToRedirect='artist'
-						totalPages={
-							userPageState.userInformation.userTopArtists
-								.totalPages
-						}
-						actionType='SET_USER_TOP_ARTISTS_OFFSET'
-						callback={userPageDispatch}
-						error={
-							userPageState.userInformation.errors.userTopArtists
-						}
-					/>
+					{userPageState.userInformation.userTopArtists.data.length >
+					0 ? (
+						<CardsContainer
+							paginationType='paginatedByOffsetInAPI'
+							title='My top artists'
+							dataByProps={
+								userPageState.userInformation.userTopArtists
+									.data
+							}
+							id={userPageState.userInformation.information.id}
+							cardsFormat='circle'
+							pathToRedirect='artist'
+							totalPages={
+								userPageState.userInformation.userTopArtists
+									.totalPages
+							}
+							actionType='SET_USER_TOP_ARTISTS_OFFSET'
+							callback={userPageDispatch}
+							error={
+								userPageState.userInformation.errors
+									.userTopArtists
+							}
+						/>
+					) : (
+						<div className='my-14'>
+							<ErrorMessage error='No top artists found.' />
+						</div>
+					)}
 
-					<CardsContainer
-						paginationType='paginatedByAfterInAPI'
-						afterParameter={
-							userPageState.userInformation.userFollowedArtists
-								.before
-						}
-						title='My followed artists'
-						dataByProps={
-							userPageState.userInformation.userFollowedArtists
-								.data
-						}
-						id={userPageState.userInformation.information.id}
-						cardsFormat='circle'
-						pathToRedirect='artist'
-						actionType='SET_USER_FOLLOWED_ARTISTS_AFTER_NEXT'
-						callback={userPageDispatch}
-						error={
-							userPageState.userInformation.errors
-								.userFollowedArtists
-						}
-					/>
+					{userPageState.userInformation.userFollowedArtists.data
+						.length > 0 ? (
+						<CardsContainer
+							paginationType='paginatedByAfterInAPI'
+							afterParameter={
+								userPageState.userInformation
+									.userFollowedArtists.before
+							}
+							title='My followed artists'
+							dataByProps={
+								userPageState.userInformation
+									.userFollowedArtists.data
+							}
+							id={userPageState.userInformation.information.id}
+							cardsFormat='circle'
+							pathToRedirect='artist'
+							actionType='SET_USER_FOLLOWED_ARTISTS_AFTER_NEXT'
+							callback={userPageDispatch}
+							error={
+								userPageState.userInformation.errors
+									.userFollowedArtists
+							}
+						/>
+					) : (
+						<div className='my-14'>
+							<ErrorMessage error='You do not follow any artist.' />
+						</div>
+					)}
 				</div>
 			</div>
 		</Layout>

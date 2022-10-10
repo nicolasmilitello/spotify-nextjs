@@ -1,4 +1,4 @@
-import { Dispatch, useEffect, useState } from 'react';
+import React, { Dispatch, useEffect, useState } from 'react';
 
 //* action types
 import { ActionType } from '../../context/action-types/action-types';
@@ -109,4 +109,4 @@ const DetailsTracks = ({
 	);
 };
 
-export default DetailsTracks;
+export default React.memo(DetailsTracks);
