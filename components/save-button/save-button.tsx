@@ -1,4 +1,3 @@
-import { useSession } from 'next-auth/react';
 import { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
