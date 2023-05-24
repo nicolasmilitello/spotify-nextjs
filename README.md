@@ -1,7 +1,5 @@
 # SPOTIFY APP
 
-## Final Project
-
 This project consists of an application which consumes the Spotify API.
 
 ## Technologies
