@@ -11,11 +11,23 @@ This project was built using NextJs, TypeScript, Tailwind, Jest and Testing Libr
 This application is capable of rendering details about artists, albums, and tracks. It also includes features such as pagination, navigation, and a search bar to look for specific resources.
 You can save tracks and albums in your library, and if you have a premium account, you can listen to tracks. Otherwise, in some cases, you will be able to listen to a preview of a song.
 
+## Screenshots
+
+<img src="public/screenshot_1.png" alt="spoyify_app_home_screenshot" width="500">
+
+<img src="public/screenshot_2.png" alt="spoyify_app_artist_screenshot" width="500">
+
+<img src="public/screenshot_3.png" alt="spoyify_app_track_screenshot" width="500">
+
+<img src="public/screenshot_4.png" alt="spoyify_app_album_screenshot" width="500">
+
+<img src="public/screenshot_5.png" alt="spoyify_app_album_notification_screenshot" width="500">
+
 ## How to try it locally
 
 The first step is to clone the project and install dependencies with `npm install`. <br />
 <br />
-Then you have to create an app in Spotify for Developers and follow its instructions to set it up.<br /> 
+Then you have to create an app in Spotify for Developers and follow its instructions to set it up.<br />
 <br />
 Finally create an `env.local` file and add the following enviroments variables: <br />
 <br />
@@ -27,6 +39,8 @@ Finally create an `env.local` file and add the following enviroments variables: 
 <br />
 `JWT_SECRET`<br />
 
+You can obtain the values of these variables from the <a href='https://developer.spotify.com/'>Spotify API</a>.<br />
+
 Now you are ready to execute the command `npm run dev` and to see the project in the localhost.
 
 ## Deploy
@@ -34,9 +48,11 @@ Now you are ready to execute the command `npm run dev` and to see the project in
 You can visit the deployed project <a href='https://spotifyproject.vercel.app/'>here</a>.
 
 # ABOUT ME
+
 ## Portfolio
 
 You can visit my portfolio to see other projects I have worked on <a href='https://portfolio-nicolasmilitello.vercel.app/'>here</a>.
 
 ## Contact
+
 You can find more about me in my LinkedIn profile <a href='https://www.linkedin.com/in/nicolas-militello-full-stack/'>here</a>.
